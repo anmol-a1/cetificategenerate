@@ -32,6 +32,10 @@ def loginuser(request):
                 li = dumps(li)
                 context = {'li': li}
                 return render(request, 'index.html', context)
+            else:
+                messages.add_message(request,messages.INFO,'invalid credentials')
+                return render(request, 'login.html')
+
         else:
             messages.add_message(request,messages.INFO,'invalid credentials')
             return render(request, 'login.html')
